@@ -1,0 +1,1216 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0E7C86">
+<meta name="description" content="실전 생존 영어 표현을 카드로 익히는 학습 앱">
+<title>생존 영어 표현 123</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Real ENG">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Noto+Serif+KR:wght@600;700&family=Noto+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F5F4;
+  --surface:#FFFFFF;
+  --surface-2:#E7ECEA;
+  --ink:#1F2933;
+  --ink-soft:#5B6B70;
+  --ink-faint:#8A9A9E;
+  --accent:#0E7C86;
+  --accent-ink:#FFFFFF;
+  --accent-soft:#DBEEEE;
+  --coral:#E4572E;
+  --coral-soft:#FBE3DC;
+  --good:#2F9E44;
+  --good-soft:#E1F3E4;
+  --border:#D7DFDD;
+  --shadow:rgba(24,36,40,.10);
+  --radius:16px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1517;
+    --surface:#182022;
+    --surface-2:#1F2A2C;
+    --ink:#E8EEEC;
+    --ink-soft:#9FB0AE;
+    --ink-faint:#6B7C7A;
+    --accent:#57D6C9;
+    --accent-ink:#07211F;
+    --accent-soft:rgba(87,214,201,.14);
+    --coral:#FF8A66;
+    --coral-soft:rgba(255,138,102,.14);
+    --good:#5FE08A;
+    --good-soft:rgba(95,224,138,.14);
+    --border:#293433;
+    --shadow:rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1517;
+  --surface:#182022;
+  --surface-2:#1F2A2C;
+  --ink:#E8EEEC;
+  --ink-soft:#9FB0AE;
+  --ink-faint:#6B7C7A;
+  --accent:#57D6C9;
+  --accent-ink:#07211F;
+  --accent-soft:rgba(87,214,201,.14);
+  --coral:#FF8A66;
+  --coral-soft:rgba(255,138,102,.14);
+  --good:#5FE08A;
+  --good-soft:rgba(95,224,138,.14);
+  --border:#293433;
+  --shadow:rgba(0,0,0,.4);
+}
+*{box-sizing:border-box;}
+html,body{height:100%;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Noto Sans KR',-apple-system,'Malgun Gothic',sans-serif;
+  padding:0 max(16px, env(safe-area-inset-left,0px)) 0 max(16px, env(safe-area-inset-right,0px));
+  -webkit-text-size-adjust:100%;
+}
+h1,h2,h3,.serif{font-family:'Fraunces','Noto Serif KR',serif;text-wrap:balance;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+a{color:var(--accent);}
+button{font:inherit;cursor:pointer;}
+[hidden]{display:none!important;}
+
+.app{max-width:760px;margin:0 auto;padding-bottom:48px;}
+
+/* header */
+header.top{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
+  background:var(--bg);
+  padding:14px 0 10px;
+  border-bottom:1px solid var(--border);
+}
+.brand{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:12px;}
+.brand h1{font-size:22px;font-weight:600;margin:0;letter-spacing:-.01em;}
+.brand .total{
+  font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink-soft);
+  background:var(--surface-2);padding:4px 10px;border-radius:999px;white-space:nowrap;
+}
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;}
+.tabs::-webkit-scrollbar{display:none;}
+.tab{
+  flex:0 0 auto;border:1px solid var(--border);background:var(--surface);color:var(--ink-soft);
+  padding:7px 14px;border-radius:999px;font-size:13.5px;font-weight:500;transition:.15s;
+}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink);}
+
+.partbar{display:flex;gap:6px;overflow-x:auto;margin-top:10px;scrollbar-width:none;}
+.partbar::-webkit-scrollbar{display:none;}
+.chip{
+  flex:0 0 auto;border:1px solid var(--border);background:var(--surface);
+  padding:6px 12px;border-radius:10px;font-size:13px;color:var(--ink-soft);font-weight:500;
+  display:flex;align-items:center;gap:6px;
+}
+.chip[aria-selected="true"]{background:var(--accent-soft);color:var(--accent);border-color:var(--accent);}
+.chip .n{font-family:'IBM Plex Mono',monospace;font-size:11px;opacity:.75;}
+
+main{padding-top:18px;}
+section.view{display:flex;flex-direction:column;gap:18px;}
+
+/* home */
+.hero{
+  background:linear-gradient(155deg,var(--surface),var(--surface-2));
+  border:1px solid var(--border);border-radius:var(--radius);padding:22px 20px;
+}
+.hero p{color:var(--ink-soft);font-size:14.5px;line-height:1.6;margin:8px 0 0;}
+.hero h2{font-size:19px;margin:0;}
+.progress-row{display:flex;align-items:center;gap:12px;margin-top:16px;}
+.progress-track{flex:1;height:8px;border-radius:99px;background:var(--surface-2);overflow:hidden;}
+.progress-fill{height:100%;background:var(--accent);border-radius:99px;transition:width .3s;}
+.progress-label{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--ink-soft);white-space:nowrap;}
+
+.partgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+@media (max-width:480px){.partgrid{grid-template-columns:1fr;}}
+.partcard{
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 15px;
+  text-align:left;display:flex;flex-direction:column;gap:8px;
+}
+.partcard .idx{font-family:'IBM Plex Mono',monospace;color:var(--accent);font-size:12px;font-weight:600;}
+.partcard h3{font-size:15px;margin:0;font-weight:600;}
+.partcard .meta{font-size:12px;color:var(--ink-faint);}
+.partcard .progress-track{height:6px;}
+.partcard-actions{display:flex;gap:6px;margin-top:2px;}
+.linkbtn{
+  border:1px solid var(--border);background:var(--surface-2);color:var(--ink);
+  border-radius:8px;padding:6px 9px;font-size:12px;font-weight:500;
+}
+
+/* study */
+.studyhead{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.studyhead h2{font-size:17px;margin:0;}
+.studyhead .count{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--ink-soft);}
+
+.modetoggle{
+  display:flex;gap:4px;background:var(--surface-2);border:1px solid var(--border);
+  border-radius:12px;padding:4px;
+}
+.modebtn{
+  flex:1;border:none;background:transparent;color:var(--ink-soft);border-radius:9px;
+  padding:9px 6px;font-size:13.5px;font-weight:600;transition:.15s;
+}
+.modebtn[aria-selected="true"]{background:var(--surface);color:var(--accent);box-shadow:0 2px 6px var(--shadow);}
+
+.stage{perspective:1400px;}
+.card{
+  position:relative;min-height:230px;border-radius:20px;cursor:pointer;
+  transform-style:preserve-3d;transition:transform .45s cubic-bezier(.2,.7,.3,1);
+}
+.card.flipped{transform:rotateY(180deg);}
+.face{
+  position:absolute;inset:0;border-radius:20px;backface-visibility:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  padding:28px 22px;border:1px solid var(--border);box-shadow:0 10px 30px -12px var(--shadow);
+}
+.face.front{background:var(--surface);}
+.face.back{background:var(--accent-soft);transform:rotateY(180deg);}
+.face .tag{font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:14px;}
+.face .kr{font-family:'Noto Serif KR',serif;font-weight:700;font-size:20px;line-height:1.5;}
+.en-row{display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap;}
+.face .en{font-family:'Fraunces','Noto Serif KR',serif;font-weight:600;font-size:22px;line-height:1.4;color:var(--ink);}
+.face .en-sub{margin-top:10px;font-family:'Noto Sans KR',sans-serif;font-size:14.5px;color:var(--ink-soft);}
+.face .hint{position:absolute;bottom:14px;font-size:11.5px;color:var(--ink-faint);}
+.speakbtn{
+  flex:0 0 auto;width:34px;height:34px;border-radius:50%;border:1px solid var(--border);
+  background:var(--surface);color:var(--accent);font-size:15px;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 6px var(--shadow);
+}
+.speakbtn:active{transform:scale(.92);}
+
+.controls{display:flex;gap:8px;}
+.ctrlbtn{
+  flex:1;border-radius:12px;border:1px solid var(--border);background:var(--surface);
+  padding:12px 8px;font-size:14px;font-weight:600;display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--ink);
+}
+.ctrlbtn small{font-size:11px;font-weight:500;color:var(--ink-faint);}
+.ctrlbtn.no{color:var(--coral);}
+.ctrlbtn.yes{color:var(--good);}
+.navrow{display:flex;gap:8px;justify-content:center;}
+.iconbtn{
+  border:1px solid var(--border);background:var(--surface);border-radius:10px;
+  width:40px;height:40px;display:flex;align-items:center;justify-content:center;color:var(--ink-soft);font-size:16px;
+}
+.shufflebtn{border:1px solid var(--border);background:var(--surface);border-radius:10px;padding:8px 12px;font-size:12.5px;color:var(--ink-soft);font-weight:500;}
+
+.expWrap{display:flex;flex-direction:column;gap:10px;}
+.expPanel{
+  border:1px solid var(--border);border-left:4px solid var(--accent);background:var(--surface);border-radius:0 14px 14px 0;padding:14px 16px;
+  display:flex;flex-direction:column;gap:8px;
+}
+.expLabel{font-size:11.5px;letter-spacing:.04em;color:var(--ink-faint);font-weight:600;text-transform:uppercase;}
+.expRow{display:flex;align-items:center;gap:10px;}
+.expTxt{flex:1;min-width:0;}
+.expEn{font-family:'Fraunces','Noto Serif KR',serif;font-weight:600;font-size:15.5px;color:var(--ink);line-height:1.45;}
+.expKr{font-size:13px;color:var(--ink-soft);margin-top:4px;}
+.speakbtn.small{width:30px;height:30px;font-size:13px;flex:0 0 auto;}
+
+/* list */
+.searchbar{
+  display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;padding:9px 12px;
+}
+.searchbar input{border:none;outline:none;background:transparent;color:var(--ink);font-size:14px;width:100%;font-family:inherit;}
+.searchbar input::placeholder{color:var(--ink-faint);}
+.filterrow{display:flex;gap:8px;align-items:center;font-size:12.5px;color:var(--ink-soft);}
+.filterrow label{display:flex;gap:5px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:5px 9px;}
+
+.list{display:flex;flex-direction:column;gap:6px;}
+.item{
+  display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);
+  border-radius:12px;padding:11px 13px;
+}
+.item .no{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-faint);width:22px;flex:0 0 auto;}
+.item .txt{flex:1;min-width:0;}
+.item .en{font-weight:600;font-size:14.5px;}
+.expBadge{font-size:11px;opacity:.75;}
+.item .kr{font-size:12.5px;color:var(--ink-soft);margin-top:2px;}
+.item .speak{
+  flex:0 0 auto;width:30px;height:30px;border-radius:50%;border:1px solid var(--border);
+  background:var(--surface-2);color:var(--accent);font-size:13px;display:flex;align-items:center;justify-content:center;
+}
+.item .check{flex:0 0 auto;width:26px;height:26px;border-radius:8px;border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;color:var(--surface);font-size:14px;background:var(--surface-2);}
+.item .check.on{background:var(--good);border-color:var(--good);color:#fff;}
+.empty{color:var(--ink-faint);font-size:13.5px;text-align:center;padding:24px 0;}
+
+footer.note{color:var(--ink-faint);font-size:12px;text-align:center;padding:22px 0 10px;line-height:1.6;}
+
+/* gate */
+.gateOverlay{
+  position:fixed;inset:0;z-index:999;
+  background:radial-gradient(120% 100% at 50% -10%, var(--accent-soft), var(--bg) 60%);
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  padding-top:max(20px, env(safe-area-inset-top,0px));
+}
+.gateCard{
+  width:100%;max-width:360px;background:var(--surface);border:1px solid var(--border);
+  border-radius:22px;padding:32px 26px 28px;box-shadow:0 20px 50px -18px var(--shadow);
+  display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;
+}
+.gateBadge{
+  width:52px;height:52px;border-radius:16px;background:var(--accent-soft);color:var(--accent);
+  display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:10px;
+}
+.gateCard h2{font-size:20px;margin:0;line-height:1.35;}
+.gateCard .sub{color:var(--ink-soft);font-size:13.5px;line-height:1.6;margin:6px 0 22px;}
+.gateForm{display:flex;flex-direction:column;gap:10px;width:100%;}
+.gateInput{
+  width:100%;border:1px solid var(--border);background:var(--surface-2);color:var(--ink);
+  border-radius:12px;padding:13px 14px;font-size:15px;font-family:inherit;text-align:center;
+  letter-spacing:.02em;outline:none;transition:.15s;
+}
+.gateInput:focus{border-color:var(--accent);background:var(--surface);}
+.gateBtn{
+  width:100%;border:none;background:var(--accent);color:var(--accent-ink);
+  border-radius:12px;padding:13px 14px;font-size:15px;font-weight:700;
+}
+.gateBtn:active{transform:scale(.98);}
+.gateErr{color:var(--coral);font-size:12.5px;font-weight:600;min-height:16px;}
+.gateFoot{color:var(--ink-faint);font-size:11.5px;margin-top:18px;line-height:1.6;}
+</style>
+
+
+</head>
+<body>
+<div class="gateOverlay" id="gateOverlay">
+  <div class="gateCard">
+    <div class="gateBadge">🔐</div>
+    <h2 class="serif">생존 영어 표현 123</h2>
+    <p class="sub">구독자를 위한 프라이빗 학습 앱이에요.<br>받으신 접속 코드를 입력해주세요.</p>
+    <form class="gateForm" id="gateForm" autocomplete="off">
+      <input class="gateInput" id="gateInput" type="text" inputmode="text" placeholder="접속 코드" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false">
+      <div class="gateErr" id="gateErr"></div>
+      <button class="gateBtn" type="submit">입장하기</button>
+    </form>
+    <div class="gateFoot">코드는 이 브라우저에만 저장되며,<br>다른 사람에게 공유하지 말아주세요 🙏</div>
+  </div>
+</div>
+
+<div class="app">
+  <header class="top">
+    <div class="brand">
+      <h1>생존 영어 표현 <span class="mono" style="color:var(--accent)">123</span></h1>
+      <span class="total mono" id="totalBadge">0 / 123</span>
+    </div>
+    <div class="tabs" role="tablist" id="tabs">
+      <button class="tab" data-view="home" aria-selected="true">홈</button>
+      <button class="tab" data-view="study" aria-selected="false">학습</button>
+      <button class="tab" data-view="list" aria-selected="false">전체 목록</button>
+    </div>
+    <div class="partbar" id="partbar"></div>
+  </header>
+
+  <main>
+    <section class="view" id="view-home"></section>
+    <section class="view" id="view-study" hidden>
+      <div class="studyhead"><h2 class="serif" id="studyTitle">학습</h2></div>
+      <div class="modetoggle" id="modeToggle" role="tablist">
+        <button class="modebtn" data-mode="expr" aria-selected="true">📝 표현 카드</button>
+        <button class="modebtn" data-mode="situation" aria-selected="false">🎬 상황 카드</button>
+      </div>
+      <div id="studyBody"></div>
+    </section>
+    <section class="view" id="view-list" hidden></section>
+  </main>
+
+  <footer class="note">카드를 눌러 뒤집고, 🔊를 눌러 발음을 들어보세요.<br>기록은 이 브라우저에만 저장돼요.</footer>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+var PARTS = [
+  {id:1, title:"이동 · 교통 · 공간", short:"이동·교통·공간", en:"Getting Around"},
+  {id:2, title:"쇼핑 · 매장 · 서비스", short:"쇼핑·매장·서비스", en:"Shopping & Services"},
+  {id:3, title:"약속 · 만남 · 스몰토크", short:"약속·만남·스몰토크", en:"Meetups & Small Talk"},
+  {id:4, title:"리액션 · 순발력", short:"리액션·순발력", en:"Reactions & Quick Wit"}
+];
+
+// ---- full expression list (123) ----
+var RAW_ITEMS = [
+[1,"I'm sorry, I'm blocking your way.","죄송해요, 제가 길을 막고 있네요."],
+[1,"Where does the line start?","줄 시작이 어디예요?"],
+[1,"Are you in line?","줄 서 계신 건가요?"],
+[1,"Is this seat taken?","여기 자리 있나요?"],
+[1,"Is anyone sitting here?","여기 누구 앉아 있나요?"],
+[1,"Can I use this chair?","이 의자 가져가도 될까요?"],
+[1,"Excuse me, coming through.","잠시 지나가겠습니다."],
+[1,"Can I squeeze past?","비좁은 사이로 좀 지나가도 될까요?"],
+[1,"Can I get by real quick?","재빠르게 지나가도 될까요?"],
+[1,"Do you mind moving a little?","조금만 비켜주실 수 있나요?"],
+[1,"Could you scoot over a bit?","옆으로 조금만 당겨 앉아주실래요?"],
+[1,"Could you make a little room?","자리 공간 조금만 내주실 수 있나요?"],
+[1,"Could you clear this table?","여기 테이블 좀 치워주시겠어요?"],
+[1,"Could you move your bag?","가방 좀 치워주실 수 있나요?"],
+[1,"Is this table free?","이 테이블 비어 있나요?"],
+[1,"Can we squeeze in here?","저희 여기 비집고 앉아도 될까요?"],
+[1,"Watch your step.","발밑 조심하세요."],
+[1,"Go ahead.","먼저 가세요 / 먼저 하세요."],
+[1,"After you.","당신 먼저 하세요."],
+[1,"Hold the door, please!","문 좀 잡아주세요!"],
+[1,"Going up? / Going down?","올라가나요? / 내려가나요?"],
+[1,"Which floor?","몇 층 가세요?"],
+[1,"Could you press 5 for me?","5층 좀 눌러주시겠어요?"],
+[1,"Are you getting off?","내리실 건가요?"],
+[1,"Let people get off first.","내리는 사람 먼저 내리게 해주세요."],
+[1,"I'll be out of your way.","길을 막지 않게 비켜설게요."],
+[1,"I'm gonna sneak out for a second.","나 잠깐 몰래/조용히 나가볼게."],
+[1,"I need to slip away early.","나 오늘 일찍 조용히 빠져나가야 해."],
+[1,"I'm gonna step out for a minute.","잠깐 밖에 나갔다 올게."],
+[1,"Let's duck out the back door.","뒷문으로 살짝 빠져나가자."],
+[1,"Could you save my seat?","제 자리 좀 잡아주실래요?"],
+[1,"The traffic is backed up.","길이 꽉 막혀 있어."],
+[1,"There must be an accident up ahead.","앞쪽에 사고가 났나 봐."],
+[1,"The roads are clear now.","이제 도로가 뻥 뚫렸어."],
+[1,"We're stuck in traffic.","우리 차 막혀서 갇혔어."],
+[1,"The weather is gonna clear up.","날씨가 갤 거야."],
+[1,"The rain is stopping.","비가 그치고 있어."],
+[1,"I'll play it safe.","안전하게 갈게."],
+[1,"I'll work around it.","어떻게든 방법을 찾아서 대처해 볼게."],
+[1,"Keep an eye on my stuff.","제 짐 좀 잠시 봐주세요."],
+[1,"Save me a spot!","내 자리 좀 맡아줘!"],
+[1,"Hold my space in line.","줄 서 있는 자리 좀 맡아줘."],
+
+[2,"Can you bring it to my table?","테이블로 가져다주실 수 있나요?"],
+[2,"I'm just browsing.","그냥 둘러보는 중이에요."],
+[2,"Can I get a new one / a fresh one?","새 제품/새 포장으로 새로 받을 수 있나요?"],
+[2,"Can I have the one in the back / at the bottom / between?","뒤에 있는 거 / 맨 밑에 있는 거 / 사이에 있는 걸로 주시겠어요?"],
+[2,"I'm here to pick up an order.","주문한 것 찾으러 왔어요."],
+[2,"I have a pickup for [Name].","[이름]으로 픽업 예약했는데요."],
+[2,"Go ahead, you go first.","먼저 계산하세요."],
+[2,"Is this on sale?","이거 할인 적용되는 건가요?"],
+[2,"Is this the sale price?","이게 세일가인가요?"],
+[2,"Is tax included?","세금 포함된 가격인가요?"],
+[2,"Is the tip included?","팁이 포함된 건가요?"],
+[2,"Is this line open?","이 계산대 계산 가능한가요?"],
+[2,"Do I pay here or at the counter?","여기서 계산하나요, 카운터에서 하나요?"],
+[2,"Can I pay separately? / Split the bill?","각자 계산해도 되나요?"],
+[2,"Keep the change.","잔돈은 됐습니다."],
+[2,"Do you have another one in the back?","재고 뒤에 하나 더 있나요?"],
+[2,"Is this to go or for here?","포장인가요, 먹고 가나요?"],
+[2,"To go, please. / For here, please.","포장이요 / 먹고 갈게요."],
+[2,"Can I get this wrapped up? / Can I get a box?","남은 음식 싸 주실 수 있나요?"],
+[2,"Check, please.","계산서 주세요."],
+[2,"Still working on it.","아직 먹는 중이에요."],
+[2,"On the side, please.","소스 등은 따로 주세요."],
+[2,"My order hasn't come out yet.","제 음식이 아직 안 나왔어요."],
+[2,"We need a few more minutes.","주문 고민할 시간 조금만 더 주세요."],
+[2,"Tap or insert?","카드를 대나요, 꽂나요?"],
+[2,"Does this machine work?","이 기계 작동하나요?"],
+[2,"Do you take cash? / Card only?","현금 받나요? / 카드만 되나요?"],
+[2,"Can I get a receipt?","영수증 주시겠어요?"],
+[2,"No receipt needed.","영수증 안 주셔도 돼요."],
+[2,"Where can I find...?","~ 어디서 찾을 수 있나요?"],
+[2,"How long is the wait?","대기 시간 얼마나 걸려요?"],
+[2,"What time do you close?","몇 시에 문 닫나요?"],
+[2,"Can I charge my phone here?","여기서 핸드폰 충전할 수 있나요?"],
+[2,"Can you slice it?","얇게 편으로 잘라주실 수 있나요?"],
+[2,"Can you cut it in half?","반으로 잘라주실 수 있나요?"],
+[2,"Can you trim the ends?","머리 끝부분만 다듬어주실 수 있나요?"],
+[2,"Can you thin it out?","머리숱 좀 쳐주실 수 있나요?"],
+[2,"Take a little off the sides.","옆머리만 조금 다듬어주세요."],
+[2,"I want to layer my hair.","머리에 층을 내고 싶어요."],
+[2,"Just a touch-up on my roots.","뿌리 염색만 하고 싶어요."],
+
+[3,"I'll meet you at the [place].","[장소]에서 만날게/봬요."],
+[3,"Can you wait for me at the [place]?","[장소]에서 나 좀 기다려줄래?"],
+[3,"I'll let you get back to what you were doing.","하시던 일 마저 하세요 / 이제 가볼게요."],
+[3,"It was great catching up.","오랜만에 만나서 대화 나눠서 정말 좋았어."],
+[3,"Let's grab a coffee sometime.","언제 커피 한잔하자."],
+[3,"Drive safe! / Get home safe!","운전 조심해서 가! / 조심히 들어가!"],
+[3,"Count me in!","나도 끼워줘! / 나도 할래!"],
+[3,"Everything is up in the air.","모든 게 아직 불확실해 / 확정된 게 없어."],
+[3,"Keep in touch.","계속 연락하고 지내자."],
+[3,"Text me when you get home.","집에 도착하면 문자해."],
+[3,"Have a good one!","좋은 하루 보내! / 잘 가!"],
+[3,"See you around.","또 보자 / 조만간 보자."],
+[3,"You got this.","너라면 할 수 있어! / 다 잘해낼 거야!"],
+[3,"Here you go.","여기 있습니다 / 여기 있어요."],
+[3,"Here you are.","여기 있습니다 / 여기 계셨군요."],
+[3,"I will take care of it.","제가 알아서 처리할게요 / 제가 담당해서 해결하겠습니다."],
+[3,"I got this for you.","너 주려고 이거 사 왔어 / 이거 너 챙겨주려고 가져왔어."],
+[3,"This is for you.","이거 당신을 위한 거예요 / 이거 너 가져."],
+[3,"I hope you like it.","마음에 들었으면 좋겠다."],
+[3,"I'm sorry you're not feeling well.","컨디션이 안 좋으시다니 마음이 아프네요 / 몸이 안 좋아서 어쩌나요."],
+[3,"I hope you feel better soon.","얼른 쾌차하시길 바랄게요 / 훌훌 털고 어서 나으세요."],
+[3,"Get some rest.","푹 쉬어 / 휴식 좀 취해."],
+[3,"I knew you would say that.","너 그 말 할 줄 알았어 / 딱 그렇게 말할 줄 알았지."],
+[3,"You don't look like you're in your 40s.","40대로 전혀 안 보이세요 / 동안이시네요."],
+[3,"I'm in my 40s.","저 40대예요 / 나 40대야."],
+
+[4,"That's weird. / It's kind of weird.","그거 이상하네 / 좀 희한하다."],
+[4,"Thanks for the heads up.","미리 알려줘서 고마워."],
+[4,"Just a heads up.","참고로 미리 알려주는데~"],
+[4,"I'll keep that in mind.","명심할게 / 참고할게."],
+[4,"My bad.","내 실수야 / 미안."],
+[4,"No worries / All good.","괜찮아요 / 문제없어요."],
+[4,"You're fine.","괜찮아요."],
+[4,"I didn't mean to.","고의가 아니었어요."],
+[4,"Pardon me.","잠시 실례합니다 / 못 들었을 때."],
+[4,"I got it.","내가 할게 / 이해했어."],
+[4,"Take your time. / No rush.","천천히 하세요 / 서두를 필요 없어요."],
+[4,"Same here.","저도 같은 걸로 주세요 / 저도 마찬가지예요."],
+[4,"I'll pass.","난 사양할게."],
+[4,"Fair enough.","듣고 보니 일리 있네."],
+[4,"I see where you're coming from.","네가 왜 그렇게 생각하는지 알겠어."],
+[4,"That makes two of us.","나도 마찬가지야."],
+[4,"Don't get me wrong.","오해는 하지 마."],
+[4,"It is what it is.","어쩌겠어, 이미 이렇게 된 걸."],
+[4,"I didn't catch that.","잘 못 들었어요."],
+[4,"You can say that again.","맞는 말이야 / 두말하면 잔소리지."],
+[4,"That rings a bell.","들어본 적 있는 것 같아."],
+[4,"It's not a big deal.","별일 아니야."],
+[4,"Keep me in the loop.","상황 진행되는 대로 공유해 줘."],
+[4,"I'll take a rain check.","다음 기회로 미룰게."],
+[4,"I'm running a bit late.","나 약속에 조금 늦고 있어."],
+[4,"I'm almost there.","나 거의 다 왔어."],
+[4,"Can you hold on for a sec?","잠시만 기다려줄래?"],
+[4,"I'll call you right back.","내가 바로 다시 전화할게."],
+[4,"Sorry to keep you waiting.","기다리게 해서 죄송합니다."],
+[4,"You go.","너 먼저 해 / 너 먼저 말해."],
+[4,"Who's next?","다음 분 누구세요?"],
+[4,"Are you ready? / I'm ready.","준비되셨나요? / 준비됐어요."],
+[4,"What do you recommend?","뭐가 추천 메뉴인가요?"],
+[4,"It's not working.","이거 작동을 안 해요."],
+[4,"Declined?","카드 결제 거절됐나요?"],
+[4,"All done!","다 끝났습니다!"],
+[4,"I know, right?","그니까! 내 말이! / 진짜 그렇지 않아?"],
+[4,"Tell me about it.","말도 마, 진짜 그래."],
+[4,"For real.","진짜로 / 리얼로."],
+[4,"100% / Totally / Absolutely.","완전 그렇지 / 100% 맞아."],
+[4,"Yeah, right.","아이고, 그러시겠지~ / 응~ 잘도 그러겠다."],
+[4,"Are you serious?","진짜로? / 장난 아니지?"],
+[4,"No way!","말도 안 돼! / 거짓말!"],
+[4,"Shut up!","거짓말! / 진짜로?! 말도 안 돼!"],
+[4,"Get out of here!","에이~ 거짓말 마! / 말도 안 되는 소리!"],
+[4,"That's crazy! / That's insane!","대박이다! / 진짜 미쳤다!"],
+[4,"I bet.","그랬겠네~ / 틀림없이 그랬을 거야."],
+[4,"Makes sense.","아~ 이해되네 / 그럴듯하네."],
+[4,"That figures.","거봐, 그럴 줄 알았어 / 어쩐지 그렇더라."],
+[4,"That's what I'm saying!","내 말이 바로 그 말이야!"]
+];
+
+var ITEMS = RAW_ITEMS.map(function(r,i){ return {id:"i"+i, part:r[0], en:r[1], kr:r[2]}; });
+
+// ---- situations (36) ----
+var RAW_SIT = [
+[1,"복도나 마트에서 내가 길을 막고 서 있다가 상대방과 눈이 마주쳤을 때","I'm sorry, I'm blocking your way.","죄송해요, 제가 길을 막고 있네요."],
+[1,"줄인지 그냥 서 있는 건지 헷갈리는 사람에게 확인할 때","Are you in line?","줄 서 계신 건가요?"],
+[1,"빈자리에 짐만 놓여 있거나 사람이 잠시 비운 것 같아 물어볼 때","Is this seat taken? / Is anyone sitting here?","여기 자리 있나요?"],
+[1,"지하철이나 좁은 통로를 뚫고 빨리 지나가야 할 때","Excuse me, coming through. / Can I get by real quick?","잠시 지나가겠습니다."],
+[1,"좁은 주차장이나 골목에서 상대방 차 때문에 막혔을 때","Could you move your car?","차 좀 빼주시겠어요?"],
+[1,"엘리베이터에 타서 다른 사람에게 버튼을 눌러달라고 부탁할 때","Could you press 5 for me?","5층 좀 눌러주시겠어요?"],
+[1,"카페에서 화장실 다녀오는 동안 옆 사람에게 자리를 부탁할 때","Could you save my seat?","제 자리 좀 잡아주실래요?"],
+[1,"도로가 차로 꽉 막혀 움직이지 않을 때","The traffic is backed up. / We're stuck in traffic.","길이 꽉 막혔어 / 차 막혀서 갇혔어."],
+[1,"막히던 도로가 뚫려서 쌩쌩 달릴 때","The roads are clear now.","이제 도로가 뻥 뚫렸어."],
+[1,"비가 오다가 흐려진 날씨가 점차 맑아지기 시작할 때","The weather is gonna clear up. / The rain is stopping.","날씨가 갤 거야 / 비가 그치고 있어."],
+[1,"카페나 도서관에서 잠시 자리를 비울 때 옆 사람에게 짐을 부탁할 때","Keep an eye on my stuff.","제 짐 좀 잠시 봐주세요."],
+[1,"먼저 도착한 친구에게 내 자리도 맡아달라고 할 때","Save me a spot! / Hold my space in line.","내 자리 좀 맡아줘! / 줄 서 있는 자리 좀 맡아줘."],
+
+[2,"음식을 주문하고 진동벨 대신 테이블로 배달받고 싶을 때","Can you bring it to my table?","테이블로 가져다주실 수 있나요?"],
+[2,"점원이 \"Can I help you?\" 하고 다가오는데 혼자 구경하고 싶을 때","I'm just browsing.","그냥 둘러보는 중이에요."],
+[2,"진열된 상품 말고 새 상품(새 박스)으로 달라고 할 때","Can I get a new one? / Can I get a fresh one?","새 제품으로 받을 수 있나요?"],
+[2,"진열대 맨 뒤나 맨 밑에 있는 특정 제품을 집어달라고 할 때","Can I have the one in the back / at the bottom / between?","뒤에/밑에/사이에 있는 걸로 주시겠어요?"],
+[2,"앱이나 전화로 미리 주문(Pick-up)하고 매장에 찾으러 갔을 때","I'm here to pick up an order for [Name].","[이름]으로 주문한 것 찾으러 왔어요."],
+[2,"일행과 음식값을 각자 따로 결제하고 싶을 때","Can I pay separately? / Can we split the bill?","각자 계산해도 되나요?"],
+[2,"남은 음식을 포장해 가고 싶거나 포장 용기를 달라고 할 때","Can I get this wrapped up? / Can I get a box?","남은 음식 싸 주실 수 있나요?"],
+[2,"소스나 드레싱을 붓지 말고 따로 담아달라고 할 때","On the side, please.","소스 등은 따로 주세요."],
+[2,"빵, 치즈, 햄처럼 얇고 납작한 슬라이스로 잘라달라고 할 때","Can you slice it?","얇게 편으로 잘라주실 수 있나요?"],
+[2,"샌드위치, 고기, 햄버거, 과일 등을 딱 반으로 잘라달라고 할 때","Can you cut it in half?","반으로 잘라주실 수 있나요?"],
+[2,"전체 기장은 유지하고 지저분해진 머리 끝만 살짝 정리하고 싶을 때","Can you trim the ends?","머리 끝부분만 다듬어주실 수 있나요?"],
+[2,"머리카락이 너무 빽빽하고 무거워서 가볍게 숱을 쳐달라고 할 때","Can you thin it out?","머리숱 좀 쳐주실 수 있나요?"],
+[2,"전체 길이는 두고 옆머리만 가볍게 치고 싶을 때","Take a little off the sides.","옆머리만 조금 다듬어주세요."],
+[2,"일자 머리가 아닌 층을 내서 부드럽고 율동감 있는 스타일을 만들고 싶을 때","I want to layer my hair.","머리에 층을 내고 싶어요."],
+[2,"전체 염색이 아닌 자라난 뿌리 부분만 염색하고 싶을 때","Just a touch-up on my roots.","뿌리 염색만 하고 싶어요."],
+
+[3,"구체적인 장소를 지정해서 거기서 만나자고 할 때","I'll meet you at the [place].","[장소]에서 만날게/봬요."],
+[3,"먼저 도착해서 상대방에게 특정 장소에서 기다려 달라고 할 때","Can you wait for me at the [place]?","[장소]에서 나 좀 기다려줄래?"],
+[3,"대화나 일을 마치고, 상대방이 하던 일로 돌아가도록 자리를 비켜줄 때","I'll let you get back to what you were doing.","하시던 일 마저 하세요 / 이만 가볼게요."],
+[3,"오랜만에 만난 지인과 밀린 이야기를 나누고 헤어질 때","It was great catching up. Let's grab a coffee sometime.","오랜만에 이야기 나눠서 좋았어. 언제 커피 한잔하자."],
+[3,"차를 타고 돌아가는 상대방에게 안전 운전을 당부할 때","Drive safe! / Get home safe!","운전 조심해서 가! / 조심히 들어가!"],
+[3,"모임이나 파티에 나도 가겠다고/참여하겠다고 할 때","Count me in!","나도 끼워줘! / 나도 할래!"],
+[3,"계획이나 일정이 아직 확정되지 않고 유동적일 때","Everything is up in the air.","모든 게 아직 불확실해 / 결정된 게 없어."],
+[3,"발표, 면접, 시험 등을 앞두고 긴장한 상대에게 용기를 줄 때","You got this.","너라면 할 수 있어! / 다 잘해낼 거야!"],
+[3,"상대방에게 물건, 서류, 음식, 영수증 등을 직접 손으로 건네줄 때","Here you go.","여기 있습니다 / 여기 있어요."],
+[3,"물건을 살짝 격식 있게 건네거나, 찾던 사람/물건을 발견했을 때","Here you are.","여기 있습니다 / 여기 계셨군요."],
+[3,"문제 상황이나 남은 일거리를 자신이 책임지고 해결하겠다고 안심시킬 때","I will take care of it.","제가 알아서 처리할게요 / 제가 담당해서 해결하겠습니다."],
+[3,"상대방을 위해 작은 선물, 커피, 디저트, 챙겨줄 물품을 건넬 때","I got this for you.","너 주려고 이거 사 왔어 / 이거 너 챙겨주려고 가져왔어."],
+[3,"선물, 팁, 엽서, 전해줄 물건을 지정해서 상대에게 건넬 때","This is for you.","이거 당신을 위한 거예요 / 이거 너 가져."],
+[3,"선물이나 직접 준비한 음식을 주며 상대의 반응을 기대할 때","I hope you like it.","마음에 들었으면 좋겠다."],
+[3,"상대가 몸살, 감기, 피로 등으로 컨디션이 안 좋다는 말을 들었을 때 공감할 때","I'm sorry you're not feeling well.","컨디션이 안 좋으시다니 마음이 아프네요 / 몸이 안 좋아서 어쩌나요."],
+[3,"아픈 동료나 지인에게 빠른 회복을 빌어주는 안부 인사를 전할 때","I hope you feel better soon.","얼른 쾌차하시길 바랄게요 / 훌훌 털고 어서 나으세요."],
+[3,"피곤해 보이거나 몸이 안 좋은 사람에게 쉬라고 따뜻하게 권유할 때","Get some rest.","푹 쉬어 / 휴식 좀 취해."],
+[3,"상대방의 반응이나 말버릇을 이미 정확히 예상하고 있었을 때 위트 있게 건넬 때","I knew you would say that.","너 그 말 할 줄 알았어 / 딱 그렇게 말할 줄 알았지."],
+[3,"상대방이 40대라고 했을 때 생각보다 훨씬 젊어 보여서 기분 좋은 덕담을 건넬 때","You don't look like you're in your 40s.","40대로 전혀 안 보이세요 / 동안이시네요."],
+[3,"나이대나 연령대를 자연스럽게 밝히거나 솔직하게 대화 주제로 꺼낼 때","I'm in my 40s.","저 40대예요 / 나 40대야."],
+
+[4,"상대방이 한 말이 이상하거나 상황이 납득되지 않을 때","That's weird. / It's kind of weird.","그거 이상하네 / 좀 희한하다."],
+[4,"상대방이 중요한 정보나 일정을 미리 일러주었을 때","Thanks for the heads up.","미리 알려줘서 고마워."],
+[4,"내 실수로 살짝 실례를 범했을 때 가볍게 사과할 때","My bad.","내 실수야 / 미안."],
+[4,"상대방이 \"Sorry!\" 하고 사과할 때 괜찮다고 안심시켜 줄 때","You're fine. / No worries.","괜찮아요 / 문제없어요."],
+[4,"상대방이 서두르거나 미안해할 때 천천히 하라고 할 때","Take your time. / No rush.","천천히 하세요 / 서두를 필요 없어요."],
+[4,"식당에서 같은 메뉴를 주문하거나 상대방 말에 완전히 동의할 때","Same here.","저도 같은 걸로 주세요 / 저도 마찬가지예요."],
+[4,"상대방의 말이나 입장이 충분히 이해될 때","Fair enough. / I see where you're coming from.","듣고 보니 일리 있네 / 네 말이 무슨 뜻인지 알겠어."],
+[4,"시끄러워서 상대방의 말을 순간 놓쳤을 때","I didn't catch that. / Pardon me?","잘 못 들었어요."],
+[4,"약속 시간에 조금 늦거나 도착 직전일 때","I'm running a bit late. / I'm almost there.","나 조금 늦고 있어 / 거의 다 왔어."],
+[4,"상대방 말에 200% 공감할 때 쓰는 원어민 최애 추임새를 쓰고 싶을 때","I know, right?","그니까! 내 말이! / 진짜 그렇지 않아?"],
+[4,"상대가 겪은 불편함이나 곤란함에 크게 공감하며 나도 잘 안다는 뉘앙스로 반응할 때","Tell me about it.","말도 마, 진짜 그래."],
+[4,"상대 말에 진심으로 동의하며 짧고 굵게 맞장구칠 때","For real.","진짜로 / 리얼로."],
+[4,"상대방 말에 토를 달 여지없이 적극 동의할 때","100% / Totally / Absolutely.","완전 그렇지 / 100% 맞아."],
+[4,"상대가 비현실적인 소리를 하거나 허풍을 떨 때 비꼬듯 장난스럽게 반응할 때","Yeah, right.","아이고, 그러시겠지~ / 응~ 잘도 그러겠다."],
+[4,"진짜인지 가짜인지 놀라며 되물어볼 때","Are you serious?","진짜로? / 장난 아니지?"],
+[4,"충격적이거나 반가운 소식을 들었을 때 놀라서 반응할 때","No way!","말도 안 돼! / 거짓말!"],
+[4,"친한 사이에서 엄청 신기한 소식이나 비하인드 스토리를 듣고 찐 놀람을 표현할 때","Shut up!","거짓말! / 진짜로?! 말도 안 돼!"],
+[4,"믿기 힘든 말을 들었을 때 장난스럽게 받아칠 때","Get out of here!","에이~ 거짓말 마! / 말도 안 되는 소리!"],
+[4,"상대의 스토리가 흥미진진하거나 말도 안 되게 스펙타클할 때","That's crazy! / That's insane!","대박이다! / 진짜 미쳤다!"],
+[4,"상대가 힘들었거나 재밌었겠다고 말할 때 안 봐도 비디오라는 뉘앙스로 받아줄 때","I bet.","그랬겠네~ / 틀림없이 그랬을 거야."],
+[4,"설명이나 전말을 듣고 고개가 끄덕여질 때 자연스럽게 추임새를 넣을 때","Makes sense.","아~ 이해되네 / 그럴듯하네."],
+[4,"예상했던 결과나 상대의 행동 패턴이 그대로 나왔을 때","That figures.","거봐, 그럴 줄 알았어 / 어쩐지 그렇더라."],
+[4,"답답했던 마음을 상대방이 정확히 짚어서 말해줬을 때 사이다처럼 맞장구칠 때","That's what I'm saying!","내 말이 바로 그 말이야!"]
+];
+
+var SITUATIONS = RAW_SIT.map(function(r,i){ return {id:"s"+i, part:r[0], kr:r[1], en:r[2], sub:r[3]}; });
+
+// ---- expansion examples (curated, 107 items) ----
+var RAW_EXP = [
+["I'm sorry, I'm blocking your way.","I'm sorry, I didn't realize I was blocking your way.","죄송해요, 제가 길을 막고 있는지 몰랐네요."],
+["Where does the line start?","Excuse me, where does the line actually start?","저기요, 줄 시작이 정확히 어디인가요?"],
+["Are you in line?","Excuse me, are you currently in line for this?","실례지만 이거 기다리시는 줄인가요?"],
+["Is this seat taken?","Do you mind if I sit here, or is this seat taken?","여기 앉아도 될까요, 아니면 주인 있는 자리인가요?"],
+["Is anyone sitting here?","Is anyone sitting here, or can I move this chair?","여기 누구 앉아 있나요, 아니면 이 의자 가져가도 될까요?"],
+["Can I use this chair?","Is it okay if I grab this chair for a second?","이 의자 잠시 가져가서 써도 괜찮을까요?"],
+["Excuse me, coming through.","Excuse me, coming through with hot food!","죄송합니다, 뜨거운 음식 들고 지나갈게요!"],
+["Can I get by real quick?","Sorry, can I just get by real quick to grab my bag?","죄송한데 제 가방 좀 챙기러 재빠르게 지나가도 될까요?"],
+["Could you move your car?","Could you move your car a little bit so I can get out?","제가 나갈 수 있게 차 좀 살짝 빼주시겠어요?"],
+["Could you make a little room?","Could you make a little room so we can squeeze in?","저희도 비집고 앉을 수 있게 자리 공간 조금만 내주실 수 있나요?"],
+["Could you clear this table?","Could you clear this table whenever you get a chance?","시간 되실 때 이 테이블 좀 치워주실 수 있나요?"],
+["Could you move your bag?","Do you mind moving your bag to the floor?","가방을 바닥으로 조금만 치워주셔도 괜찮을까요?"],
+["Is this table free?","Is this table free, or is someone waiting for it?","이 테이블 비어 있나요, 아니면 기다리는 사람이 있나요?"],
+["Can we squeeze in here?","Is it alright if we squeeze in right next to you?","저희가 바로 옆에 좀 비집고 합석해도 괜찮을까요?"],
+["Watch your step.","Watch your step on the way down, it's pretty slippery.","내려가는 길 발밑 조심하세요, 좀 많이 미끄럽습니다."],
+["Go ahead.","You go ahead first, I'm still taking my time.","먼저 하세요, 전 아직 천천히 하는 중이라서요."],
+["After you.","No, after you, please! You were here before me.","아니에요, 당신 먼저 하세요! 저보다 먼저 오셨잖아요."],
+["Hold the door, please!","Could you hold the elevator door for just a second, please?","엘리베이터 문 잠시만 좀 잡아주실 수 있나요?"],
+["Going up? / Going down?","Are you guys going up or going down?","혹시 올라가시나요, 아니면 내려가시나요?"],
+["Which floor?","Which floor are you heading to? I can press it.","몇 층으로 가시나요? 제가 눌러드릴게요."],
+["Could you press 5 for me?","Could you hit floor 5 for me, please?","5층 버튼 좀 눌러주실 수 있나요?"],
+["Are you getting off?","Are you getting off at the next stop?","혹시 다음 정거장에서 내리실 건가요?"],
+["Let people get off first.","Please let the people get off first before boarding.","탑승하시기 전에 내리는 사람 먼저 내리게 해주세요."],
+["I'll be out of your way.","Don't worry, I'll be completely out of your way in a second.","걱정 마세요, 금방 길 안 막히게 비켜드릴게요."],
+["I need to slip away early.","I might need to slip away a bit early tonight.","나 오늘 밤에는 조금 일찍 조용히 빠져나가야 할 것 같아."],
+["Could you save my seat?","Can you save me a spot near the front row?","앞쪽 줄로 제 자리 하나만 맡아주실 수 있나요?"],
+["Can you bring it to my table?","Could you bring the drinks to our table when they're ready?","음료 준비되면 저희 테이블로 가져다주실 수 있나요?"],
+["I'm just browsing.","I'm just browsing around for now, thanks!","저 지금은 그냥 둘러보는 중이에요, 감사합니다!"],
+["Can I get a new one / a fresh one?","Can I get a fresh one from a new package in the back?","뒤에 있는 새 포장으로 하나 받을 수 있을까요?"],
+["Can I have the one in the back / at the bottom / between?","Can I have the one on the very bottom shelf instead?","대신 맨 밑 선반에 있는 걸로 집어주실 수 있나요?"],
+["I'm here to pick up an order.","I'm here to pick up an online order for Alex.","알렉스라는 이름으로 온라인 주문한 것 찾으러 왔는데요."],
+["I have a pickup for [Name].","Hi, I have a pickup order under the name Sarah.","안녕하세요, 사라라는 이름으로 픽업 예약이 있는데요."],
+["Go ahead, you go first.","You can go ahead and check out first, I have a full cart.","먼저 계산하세요, 제 카트는 꽉 차서 오래 걸려요."],
+["Is this on sale?","Excuse me, is this item currently on sale?","실례지만 이 제품 지금 할인 적용되는 건가요?"],
+["Is this the sale price?","Is this price tag already the final sale price?","이 가격표가 이미 최종 세일 가격인가요?"],
+["Is tax included?","Is the sales tax included in this price?","이 가격에 판매세가 포함되어 있는 건가요?"],
+["Is the tip included?","Is the tip already included in the final bill?","최종 계산서에 팁이 이미 포함되어 있나요?"],
+["Is this line open?","Is this checkout line currently open?","이 계산대 지금 계산 가능한가요?"],
+["Do I pay here or at the counter?","Should I pay right here or at the front counter?","여기서 바로 결제하나요, 아니면 앞쪽 카운터에서 하나요?"],
+["Can I pay separately? / Split the bill?","Can we split the check and pay separately?","저희 계산서 나눠서 각자 결제해도 되나요?"],
+["Keep the change.","You can just keep the change, thanks!","잔돈은 그냥 가지셔도 돼요, 감사합니다!"],
+["Do you have another one in the back?","Do you happen to have another size in the back?","혹시 뒷창고에 다른 사이즈 하나 더 있나요?"],
+["Is this to go or for here?","Will that be for here or to go today?","오늘 드시고 가시나요, 포장해 가시나요?"],
+["To go, please. / For here, please.","I'd like to get this to go, please.","이거 포장해서 가져가고 싶습니다."],
+["Can I get this wrapped up? / Can I get a box?","Can I get these leftovers wrapped up in a box?","남은 음식 포장 용기에 싸 주실 수 있나요?"],
+["Check, please.","Could we get the check whenever you're ready?","준비되실 때 저희 계산서 좀 가져다주시겠어요?"],
+["Still working on it.","I'm still working on it, so you can leave the plate.","아직 먹는 중이라 접시 그냥 두셔도 돼요."],
+["On the side, please.","Can you put the salad dressing on the side, please?","샐러드 드레싱은 안 붓고 따로 담아주실 수 있나요?"],
+["My order hasn't come out yet.","Could you check if my food order is coming out soon?","제 음식 주문이 곧 나오는지 확인 좀 해주실 수 있나요?"],
+["We need a few more minutes.","We just need a few more minutes to look over the menu.","메뉴판 좀 더 둘러볼 시간 몇 분만 더 주세요."],
+["Tap or insert?","Should I tap my credit card or insert it here?","신용카드를 위에 대나요, 아니면 꽂아야 하나요?"],
+["Does this machine work?","Excuse me, does this card machine work properly?","실례지만 이 카드 기계 제대로 작동하는 거 맞나요?"],
+["Do you take cash? / Card only?","Do you take cash here, or is it card only?","여기 현금 받나요, 아니면 카드 결제만 되나요?"],
+["Can I get a receipt?","Can I get a printed receipt for this purchase?","이 결제건 영수증 종이로 출력받을 수 있을까요?"],
+["No receipt needed.","I'm good, no receipt needed for this, thanks!","됐습니다, 이건 영수증 따로 안 주셔도 돼요, 감사해요!"],
+["Where can I find...?","Can you show me where I can find the organic milk?","유기농 우유가 어디 있는지 좀 알려주실 수 있나요?"],
+["How long is the wait?","How long is the estimated wait for a table of two?","2명 테이블 기준으로 예상 대기 시간이 얼마나 걸리나요?"],
+["What time do you close?","What time do you guys close tonight?","오늘 밤 몇 시에 문 닫으시나요?"],
+["Can I charge my phone here?","Is it okay if I plug in and charge my phone right here?","여기 바로 밑에 제 핸드폰 충전기 좀 꽂아도 될까요?"],
+["The traffic is backed up.","The traffic is totally backed up on the highway.","고속도로 위에 차가 완전히 꽉 막혀 있어."],
+["The roads are clear now.","Luckily, the roads are completely clear now.","다행히 지금은 도로가 뻥 뚫렸어."],
+["We're stuck in traffic.","We're stuck in traffic, so we might arrive a bit late.","우리 차 막혀서 갇혀가지고 조금 늦게 도착할 수도 있어."],
+["The weather is gonna clear up.","Don't worry, the weather is gonna clear up by afternoon.","걱정 마, 오후쯤 되면 날씨가 맑게 갤 거야."],
+["The rain is stopping.","Look outside, the rain is finally stopping.","밖을 봐, 비가 드디어 그치고 있어."],
+["I'll meet you at the [place].","I'll meet you right in front of the main entrance.","정문 바로 앞쪽에서 너랑 만날게."],
+["Can you wait for me at the [place]?","Could you wait for me inside the lobby for a few minutes?","로비 안쪽에서 나 몇 분만 기다려줄 수 있어?"],
+["I'll let you get back to what you were doing.","I'll let you get back to your work now, thanks for your time!","이제 하시던 일 마저 하세요, 시간 내주셔서 감사합니다!"],
+["It was great catching up.","It was really great catching up with you after all this time.","오랜만에 만나서 수다 떨고 이야기 나누니까 진짜 좋았어."],
+["Let's grab a coffee sometime.","We should definitely grab a coffee sometime next week.","우리 다음 주 중에 꼭 언제 커피 한잔하자."],
+["Drive safe! / Get home safe!","Make sure to drive safe and text me when you get home!","운전 조심해서 가고 집에 도착하면 꼭 문자해!"],
+["Count me in!","That sounds awesome, count me in for the party!","그거 진짜 좋겠다, 그 파티에 나도 꼭 끼워줘!"],
+["Everything is up in the air.","Our weekend plans are still completely up in the air.","우리 주말 계획은 아직 전혀 확정된 게 없고 불확실해."],
+["Keep in touch.","Don't be a stranger, let's keep in touch!","소식 끊기지 말고 계속 연락하고 지내자!"],
+["Text me when you get home.","Have a good night and text me when you get home safe.","좋은 밤 보내고 집에 안전히 도착하면 문자 남겨줘."],
+["Have a good one!","Thanks for the help, have a good one!","도와주셔서 고마워요, 좋은 하루 보내세요!"],
+["See you around.","I gotta run now, see you around the neighborhood!","나 이제 가봐야 해, 동네에서 조만간 또 보자!"],
+["That's weird. / It's kind of weird.","That's really weird, it worked perfectly fine yesterday.","그거 진짜 이상하네, 어제만 해도 멀쩡히 잘 작동했거든."],
+["Thanks for the heads up.","Thanks for the heads up, I'll prepare for it in advance.","미리 귀띔해 줘서 고마워, 미리 준비해 둘게."],
+["Just a heads up.","Just a heads up, the roads are super icy this morning.","참고로 미리 알려주는데, 오늘 아침 도로가 엄청 빙판길이야."],
+["I'll keep that in mind.","Thanks for the advice, I'll definitely keep that in mind.","조언 고마워, 잊지 않고 꼭 참고해서 기억할게."],
+["My bad.","Oh my bad, I didn't see you standing there!","앗 내 실수, 거기 서 계신 줄 몰랐어요!"],
+["No worries / All good.","No worries at all, everything is completely all good.","전혀 걱정하지 마세요, 다 문제없고 괜찮습니다."],
+["You're fine.","Oh you're fine! Don't worry about apologizing.","아 괜찮아요! 사과하실 필요 전혀 없습니다."],
+["I didn't mean to.","I'm so sorry, I really didn't mean to bump into you.","정말 죄송해요, 일부러 부딪치려던 게 아니었어요."],
+["Pardon me.","Pardon me, I couldn't hear what you just said.","잠시 실례지만, 방금 하신 말씀을 못 들었어요."],
+["I got it.","Don't worry about the mess, I got it covered.","어지러워진 건 걱정 마, 내가 다 처리할게."],
+["Take your time. / No rush.","Take your time, there is absolutely no rush.","천천히 하세요, 절대로 서두르실 필요 없습니다."],
+["Same here.","I'll have what she's having, so same here, please.","저분이 드시는 거랑 같은 걸로 저도 주세요."],
+["I'll pass.","Thanks for the offer, but I think I'll pass this time.","제안은 고맙지만, 이번엔 사양할게."],
+["Fair enough.","That's fair enough, I completely understand your situation.","듣고 보니 일리 있네, 네 상황 충분히 이해해."],
+["I see where you're coming from.","I totally see where you're coming from with that point.","네가 왜 그 점에 대해 그렇게 생각하는지 완전히 이해해."],
+["Don't get me wrong.","Don't get me wrong, I really love the original idea.","오해는 하지 말고 들어줘, 나 원래 아이디어 정말 마음에 들어."],
+["It is what it is.","We can't change it now, so it is what it is.","지금 와서 바꿀 순 없으니, 어쩌겠어 이미 이렇게 된 걸."],
+["I didn't catch that.","Sorry, I didn't quite catch that last sentence.","죄송해요, 방금 하신 마지막 문장을 잘 못 들었어요."],
+["It's not a big deal.","Don't stress over it, it's really not a big deal.","그것 때문에 스트레스받지 마, 진짜 별일 아니야."],
+["I'm running a bit late.","Sorry guys, I'm running about 10 minutes late today.","얘들아 미안, 나 오늘 한 10분 정도 약속에 늦고 있어."],
+["I'm almost there.","Just wait for me inside, I'm almost there now!","안에서 기다려줘, 나 이제 거의 다 왔어!"],
+["Can you hold on for a sec?","Can you hold on for just a sec while I take this call?","나 이 전화 받는 동안 잠시만 기다려줄래?"],
+["I'll call you right back.","I'm driving right now, I'll call you right back in 5 minutes.","나 지금 운전 중이라, 5분 뒤에 바로 다시 전화할게."],
+["Sorry to keep you waiting.","I'm so sorry to keep you waiting for so long.","너무 오래 기다리게 해서 정말 죄송합니다."],
+["You go.","Oh sorry for interrupting, you go ahead and speak first!","아 말 자르려서 미안해, 너 먼저 계속 말해!"],
+["What do you recommend?","What kind of drink do you usually recommend to new visitors?","처음 온 손님한테는 보통 어떤 음료를 추천하시나요?"],
+["It's not working.","I think this tap-to-pay feature is not working properly.","이 카드 대는 결제 기능이 제대로 작동을 안 하는 것 같아요."],
+["Declined?","Did my card just get declined? Let me try another one.","제 카드가 방금 결제 거절됐나요? 다른 카드로 해볼게요."],
+["Keep an eye on my stuff.","Could you please keep an eye on my laptop while I use the restroom?","화장실 다녀오는 동안 제 노트북 좀 봐주실 수 있나요?"],
+["Save me a spot!","If you get there first, make sure to save me a spot near the front!","네가 먼저 도착하면 꼭 앞쪽으로 내 자리 하나만 맡아줘!"],
+["Hold my space in line.","Can you hold my space in line for just 30 seconds while I grab a water?","물 하나만 집어올 동안 줄 서 있는 자리 딱 30초만 맡아주실 수 있나요?"],
+["Can I squeeze past?","Sorry, can I just squeeze past you for a second?","죄송한데 잠깐 좀 비집고 지나가도 될까요?"],
+["Do you mind moving a little?","Would you mind moving a little so I can get through?","제가 지나갈 수 있게 조금만 비켜주실 수 있나요?"],
+["Could you scoot over a bit?","Could you scoot over a bit so I can sit down too?","저도 앉을 수 있게 옆으로 조금만 당겨 앉아주실래요?"],
+["I'm gonna sneak out for a second.","I'm gonna sneak out for a second to take this call.","이 전화 받으러 잠깐 몰래 나가볼게."],
+["I'm gonna step out for a minute.","I'm gonna step out for a minute to get some fresh air.","바람 좀 쐬러 잠깐 밖에 나갔다 올게."],
+["Let's duck out the back door.","Let's duck out the back door before the speech ends.","연설 끝나기 전에 뒷문으로 살짝 빠져나가자."],
+["There must be an accident up ahead.","There must be an accident up ahead, everyone's slowing down.","다들 속도를 줄이는 걸 보니 앞쪽에 사고가 났나 봐."],
+["That makes two of us.","I'm exhausted today. That makes two of us.","나 오늘 완전 지쳤어. 나도 마찬가지야."],
+["You can say that again.","This traffic is unbelievable. You can say that again.","이 교통량 진짜 말도 안 돼. 두말하면 잔소리지."],
+["That rings a bell.","That name rings a bell, but I can't remember where I heard it.","그 이름 들어본 적 있는 것 같은데, 어디서 들었는지 기억이 안 나."],
+["Keep me in the loop.","Please keep me in the loop on how the project goes.","프로젝트가 어떻게 진행되는지 계속 공유해 줘."],
+["I'll take a rain check.","I can't make it tonight, so I'll take a rain check on dinner.","오늘 밤엔 못 갈 것 같아서, 저녁은 다음 기회로 미룰게."],
+["Who's next?","Who's next in line? I can help you now.","다음 분 누구세요? 지금 도와드릴게요."],
+["Are you ready? / I'm ready.","Are you ready to go? I'm ready whenever you are.","갈 준비 됐어? 나는 언제든 준비됐어."],
+["All done!","All done! You can head to the next station now.","다 끝났습니다! 이제 다음 자리로 이동하시면 됩니다."],
+["I'll play it safe.","I'm not sure about the weather, so I'll play it safe and bring an umbrella.","날씨가 확실치 않아서 안전하게 우산을 챙길게."],
+["I'll work around it.","The store is closed, but I'll work around it and order online instead.","가게가 닫혔지만 어떻게든 방법을 찾아서 온라인으로 주문해 볼게."],
+["You got this.","Don't be nervous, you got this!","너무 떨지 마, 너 충분히 해낼 수 있어!"],
+["Here you go.","Here you go, here is your iced coffee and receipt.","여기 있습니다, 주문하신 아이스 커피와 영수증이에요."],
+["Here you are.","Oh, here you are! I was looking for you all over the place.","아, 너 여기 있었구나! 온 동네를 다 찾아다녔잖아."],
+["I will take care of it.","Don't worry about the mess, I will take care of it right away.","어지러워진 건 걱정 마세요, 제가 지금 바로 정리해서 처리할게요."],
+["I got this for you.","I got this for you on my way home, I hope it helps!","집에 오는 길에 너 주려고 이거 사 왔는데, 도움이 되면 좋겠다!"],
+["This is for you.","This is for you, just a little something to say thank you.","이거 너 주려고 가져온 거야, 감사의 마음을 담은 작은 성의야."],
+["I hope you like it.","I picked this out for you, I really hope you like it!","너 생각하면서 골라온 건데, 정말 마음에 들었으면 좋겠다!"],
+["I'm sorry you're not feeling well.","I'm so sorry you're not feeling well today, please don't push yourself.","오늘 컨디션이 많이 안 좋으시다니 속상하네요, 너무 무리하지 마세요."],
+["I hope you feel better soon.","Take good care of yourself and I hope you feel better soon!","몸조리 잘하시고 어서 훌훌 털고 나으시길 바랄게요!"],
+["Get some rest.","You look exhausted today, go home and get some rest.","너 오늘 너무 지쳐 보인다, 어서 집에 가서 푹 좀 쉬어."],
+["I knew you would say that.","Haha, I knew you would say that! You always say the exact same thing.","하하, 너 딱 그렇게 말할 줄 알았어! 너 매번 똑같이 말하잖아."],
+["You don't look like you're in your 40s.","Seriously? You really don't look like you're in your 40s at all!","진짜요? 전혀 40대로 안 보이시는데요!"],
+["I'm in my 40s.","Believe it or not, I'm actually in my early 40s now.","믿기 힘드시겠지만, 저 사실 이제 40대 초반이에요."],
+["I know, right?","I know, right? I was thinking the exact same thing!","그니까 내 말이! 나도 정확히 똑같은 생각 하고 있었어!"],
+["Tell me about it.","Ugh, tell me about it. The traffic was horrible today.","아휴, 말도 마. 오늘 차 진짜 미치게 막히더라."],
+["For real.","For real, that place has the best coffee in town.","진짜 리얼로, 거기 커피가 동네에서 제일 맛있어."],
+["100% / Totally / Absolutely.","Totally, you should definitely go for it.","완전 맞지, 너 무조건 그거 도전해 봐야 해."],
+["Yeah, right.","Yeah, right. Like you're actually gonna wake up at 5 AM.","응~ 그러시겠지. 네가 새벽 5시에 실제로 잘도 깨어나겠다."],
+["Are you serious?","Are you serious? That's completely insane!","너 진짜야? 그거 진짜 말도 안 된다!"],
+["No way!","No way! How did you manage to get those tickets?","말도 안 돼! 너 그 티켓 어떻게 구한 거야?"],
+["Shut up!","Shut up! She actually said that to your face?","대박 거짓말! 그 여자가 진짜 네 얼굴에 대고 그렇게 말했어?"],
+["Get out of here!","Get out of here! There's no way he remembered that.","에이 장난치지 마! 그 사람이 그걸 기억했을 리가 없잖아."],
+["That's crazy! / That's insane!","That's crazy! I can't believe that happened to you.","진짜 대박이다! 너한테 그런 일이 있었다니 안 믿겨."],
+["I bet.","I bet you were super exhausted after that long flight.","그 긴 비행 타고 나서 너 틀림없이 엄청 피곤했겠다."],
+["Makes sense.","Ah, that makes total sense now. Thanks for explaining!","아, 이제 완전히 이해가 되네. 설명해 줘서 고마워!"],
+["That figures.","That figures. He's always late on Mondays.","어쩐지 그럴 줄 알았어. 그 친구 월요일마다 항상 늦잖아."],
+["That's what I'm saying!","That's what I'm saying! Why don't they just fix it now?","내 말이 바로 그 말이야! 왜 지금 그냥 안 고치냐고!"],
+["Can you slice it?","Can you slice this bread for me, please?","이 빵 좀 먹기 좋게 슬라이스로 잘라주시겠어요?"],
+["Can you cut it in half?","Can you cut this sandwich in half, please?","이 샌드위치 반으로 좀 잘라주실 수 있나요?"],
+["Can you trim the ends?","Can you just trim the split ends and keep the length, please?","갈라진 끝부분만 다듬어주시고 기장은 그대로 유지해 주시겠어요?"],
+["Can you thin it out?","My hair feels too heavy, could you thin it out a bit?","머리가 너무 무겁게 느껴지는데 숱 좀 가볍게 쳐주실 수 있나요?"],
+["Take a little off the sides.","Could you just take a little bit off the sides and leave the top?","윗머리는 두고 옆머리만 조금만 쳐주실 수 있나요?"],
+["I want to layer my hair.","Can you layer my hair around the front to frame my face?","얼굴 라인을 따라 앞쪽 머리에 층을 좀 내주실 수 있나요?"],
+["Just a touch-up on my roots.","I'm just looking to get a touch-up on my roots today.","오늘은 뿌리 염색만 진행하고 싶어요."]
+];
+function normalizeText(s){
+  return String(s).toLowerCase().replace(/[^\w\s]/g,"").replace(/\s+/g," ").trim();
+}
+var EXP_INDEX = {};
+RAW_EXP.forEach(function(r){ EXP_INDEX[normalizeText(r[0])] = {en:r[1], kr:r[2]}; });
+// aliases: situation phrasing that combines/rewords two answers -> point to the closest existing expansion
+var EXP_ALIASES = [
+  ["Is this seat taken? / Is anyone sitting here?","Is this seat taken?"],
+  ["Excuse me, coming through. / Can I get by real quick?","Excuse me, coming through."],
+  ["Can I get a new one? / Can I get a fresh one?","Can I get a new one / a fresh one?"],
+  ["I'm here to pick up an order for [Name].","I'm here to pick up an order."],
+  ["Can I pay separately? / Can we split the bill?","Can I pay separately? / Split the bill?"],
+  ["The traffic is backed up. / We're stuck in traffic.","The traffic is backed up."],
+  ["The weather is gonna clear up. / The rain is stopping.","The weather is gonna clear up."],
+  ["It was great catching up. Let's grab a coffee sometime.","It was great catching up."],
+  ["You're fine. / No worries.","You're fine."],
+  ["Fair enough. / I see where you're coming from.","Fair enough."],
+  ["I didn't catch that. / Pardon me?","I didn't catch that."],
+  ["I'm running a bit late. / I'm almost there.","I'm running a bit late."],
+  ["Save me a spot! / Hold my space in line.","Save me a spot!"]
+];
+EXP_ALIASES.forEach(function(a){
+  var target = EXP_INDEX[normalizeText(a[1])];
+  if(target) EXP_INDEX[normalizeText(a[0])] = target;
+});
+function expansionFor(en){ return EXP_INDEX[normalizeText(en)]; }
+
+// ---- access gate ----
+var GATE_KEY = "survival-eng-123-access";
+var GATE_CODE = "Grace1203";
+(function(){
+  var overlay = document.getElementById("gateOverlay");
+  var form = document.getElementById("gateForm");
+  var input = document.getElementById("gateInput");
+  var err = document.getElementById("gateErr");
+  if(!overlay || !form) return;
+  var unlocked = false;
+  try{ unlocked = localStorage.getItem(GATE_KEY) === "granted"; }catch(e){ unlocked = false; }
+  if(unlocked){
+    overlay.hidden = true;
+    return;
+  }
+  setTimeout(function(){ try{ input.focus(); }catch(e){} }, 50);
+  form.addEventListener("submit", function(e){
+    e.preventDefault();
+    var val = (input.value || "").trim().replace(/\s+/g,"");
+    if(val.toLowerCase() === GATE_CODE.toLowerCase()){
+      try{ localStorage.setItem(GATE_KEY, "granted"); }catch(e){}
+      overlay.style.transition = "opacity .25s ease";
+      overlay.style.opacity = "0";
+      setTimeout(function(){ overlay.hidden = true; }, 250);
+    }else{
+      err.textContent = "코드가 올바르지 않아요. 다시 확인해주세요.";
+      input.value = "";
+      input.focus();
+    }
+  });
+})();
+
+// ---- speech ----
+var voicesReady = false;
+if(window.speechSynthesis){
+  window.speechSynthesis.onvoiceschanged = function(){ voicesReady = true; };
+}
+function speak(text){
+  try{
+    if(!window.speechSynthesis) return;
+    var clean = String(text).replace(/\s*\/\s*/g, ", or ").replace(/\[|\]/g,"");
+    window.speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(clean);
+    u.lang = "en-US";
+    u.rate = 0.92;
+    u.pitch = 1;
+    var voices = window.speechSynthesis.getVoices ? window.speechSynthesis.getVoices() : [];
+    var en = voices.filter(function(v){ return /^en/i.test(v.lang); });
+    if(en.length){
+      var us = en.filter(function(v){ return /US/i.test(v.lang); });
+      u.voice = us[0] || en[0];
+    }
+    window.speechSynthesis.speak(u);
+  }catch(e){}
+}
+
+// ---- state ----
+var STORE_KEY = "survival-eng-123-progress";
+var known = {};
+try{
+  var raw = localStorage.getItem(STORE_KEY);
+  if(raw) known = JSON.parse(raw) || {};
+}catch(e){ known = {}; }
+
+function saveKnown(){
+  try{ localStorage.setItem(STORE_KEY, JSON.stringify(known)); }catch(e){}
+}
+function isKnown(id){ return !!known[id]; }
+function setKnown(id, val){ known[id] = !!val; saveKnown(); refreshBadges(); }
+
+var state = {
+  view: "home",
+  part: 1,
+  studyMode: "expr",  // "expr" | "situation"
+  flashIdx: 0,
+  flashOrder: [],
+  sitIdx: 0,
+  sitOrder: [],
+  flipped: false,
+  expOpen: false,
+  listQuery: "",
+  listUnknownOnly: false
+};
+
+function itemsForPart(p){
+  if(p === "all") return ITEMS.slice();
+  return ITEMS.filter(function(it){ return it.part === p; });
+}
+function situationsForPart(p){
+  if(p === "all") return SITUATIONS.slice();
+  return SITUATIONS.filter(function(s){ return s.part === p; });
+}
+function shuffled(arr){
+  var a = arr.slice();
+  for(var i=a.length-1;i>0;i--){
+    var j = Math.floor(Math.random()*(i+1));
+    var t=a[i]; a[i]=a[j]; a[j]=t;
+  }
+  return a;
+}
+function partTitle(p){
+  if(p === "all") return "전체";
+  var m = PARTS.filter(function(x){return x.id===p;})[0];
+  return m ? ("Part "+m.id+" · "+m.title) : "";
+}
+
+// ---- render: header tabs ----
+document.getElementById("tabs").addEventListener("click", function(e){
+  var btn = e.target.closest(".tab");
+  if(!btn) return;
+  goToView(btn.getAttribute("data-view"));
+});
+function goToView(view){
+  state.view = view;
+  document.querySelectorAll(".tab").forEach(function(t){ t.setAttribute("aria-selected", t.getAttribute("data-view")===view ? "true":"false"); });
+  document.querySelectorAll("section.view").forEach(function(v){ v.hidden = true; });
+  document.getElementById("view-"+view).hidden = false;
+  render();
+}
+
+// ---- part bar ----
+var partbarEl = document.getElementById("partbar");
+function renderPartbar(){
+  var html = '';
+  PARTS.forEach(function(p){
+    var cnt = ITEMS.filter(function(it){return it.part===p.id;}).length;
+    html += '<button class="chip" data-part="'+p.id+'"><b>P'+p.id+'</b> '+p.short+' <span class="n">'+cnt+'</span></button>';
+  });
+  html += '<button class="chip" data-part="all">전체 <span class="n">123</span></button>';
+  partbarEl.innerHTML = html;
+  syncPartbar();
+  partbarEl.querySelectorAll(".chip").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var v = btn.getAttribute("data-part");
+      state.part = (v === "all") ? "all" : parseInt(v,10);
+      resetFlash(); resetSituation();
+      render();
+    });
+  });
+}
+function syncPartbar(){
+  partbarEl.querySelectorAll(".chip").forEach(function(btn){
+    var v = btn.getAttribute("data-part");
+    var match = (v === "all" && state.part === "all") || (parseInt(v,10) === state.part);
+    btn.setAttribute("aria-selected", match ? "true" : "false");
+  });
+  partbarEl.hidden = (state.view === "home");
+}
+
+// ---- mode toggle (표현카드 / 상황카드) ----
+document.getElementById("modeToggle").addEventListener("click", function(e){
+  var btn = e.target.closest(".modebtn");
+  if(!btn) return;
+  state.studyMode = btn.getAttribute("data-mode");
+  state.flipped = false;
+  state.expOpen = false;
+  document.querySelectorAll("#modeToggle .modebtn").forEach(function(b){
+    b.setAttribute("aria-selected", b===btn ? "true":"false");
+  });
+  renderStudyBody();
+});
+
+// ---- HOME ----
+var homeEl = document.getElementById("view-home");
+function renderHome(){
+  var masteredTotal = ITEMS.filter(function(it){return isKnown(it.id);}).length;
+  var pct = Math.round(masteredTotal/ITEMS.length*100);
+  var html = '';
+  html += '<div class="hero">'
+    + '<h2 class="serif">일상 생존 표현, 카드로 익히기</h2>'
+    + '<p>상황을 먼저 떠올려보고 표현이 안 떠오르면 카드를 뒤집어 확인하세요. 🔊 버튼으로 발음도 들을 수 있어요.</p>'
+    + '<div class="progress-row"><div class="progress-track"><div class="progress-fill" style="width:'+pct+'%"></div></div>'
+    + '<span class="progress-label">'+masteredTotal+' / '+ITEMS.length+' 완료</span></div>'
+    + '</div>';
+
+  html += '<div class="partgrid">';
+  PARTS.forEach(function(p){
+    var its = ITEMS.filter(function(it){return it.part===p.id;});
+    var m = its.filter(function(it){return isKnown(it.id);}).length;
+    var pc = its.length ? Math.round(m/its.length*100) : 0;
+    html += '<div class="partcard">'
+      + '<div class="idx">PART '+p.id+'</div>'
+      + '<h3>'+p.title+'</h3>'
+      + '<div class="meta">'+its.length+'개 표현 · '+m+'개 완료</div>'
+      + '<div class="progress-track"><div class="progress-fill" style="width:'+pc+'%"></div></div>'
+      + '<div class="partcard-actions">'
+      + '<button class="linkbtn" data-mode="expr" data-part="'+p.id+'">📝 표현 카드</button>'
+      + '<button class="linkbtn" data-mode="situation" data-part="'+p.id+'">🎬 상황 카드</button>'
+      + '</div></div>';
+  });
+  html += '</div>';
+  homeEl.innerHTML = html;
+
+  homeEl.querySelectorAll("[data-mode]").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      state.part = parseInt(btn.getAttribute("data-part"),10);
+      state.studyMode = btn.getAttribute("data-mode");
+      resetFlash(); resetSituation();
+      document.querySelectorAll("#modeToggle .modebtn").forEach(function(b){
+        b.setAttribute("aria-selected", b.getAttribute("data-mode")===state.studyMode ? "true":"false");
+      });
+      goToView("study");
+    });
+  });
+}
+
+// ---- STUDY (표현 카드 + 상황 카드, 같은 화면에서 전환) ----
+var studyBodyEl = document.getElementById("studyBody");
+function resetFlash(){
+  state.flashOrder = shuffled(itemsForPart(state.part).map(function(it){return it.id;}));
+  state.flashIdx = 0;
+  state.flipped = false;
+  state.expOpen = false;
+}
+function currentFlashItem(){
+  var pool = itemsForPart(state.part);
+  var id = state.flashOrder[state.flashIdx];
+  return pool.filter(function(it){return it.id===id;})[0] || pool[0];
+}
+function resetSituation(){
+  state.sitOrder = shuffled(situationsForPart(state.part).map(function(s){return s.id;}));
+  state.sitIdx = 0;
+  state.flipped = false;
+  state.expOpen = false;
+}
+function currentSit(){
+  var pool = situationsForPart(state.part);
+  var id = state.sitOrder[state.sitIdx];
+  return pool.filter(function(s){return s.id===id;})[0] || pool[0];
+}
+
+function renderStudyBody(){
+  document.getElementById("studyTitle").textContent = partTitle(state.part) + " 학습";
+  if(state.studyMode === "situation") renderSituation();
+  else renderFlash();
+}
+
+function renderFlash(){
+  var pool = itemsForPart(state.part);
+  if(pool.length === 0){ studyBodyEl.innerHTML = '<p class="empty">표현이 없어요.</p>'; return; }
+  if(state.flashOrder.length !== pool.length) resetFlash();
+  var it = currentFlashItem();
+  var exp = expansionFor(it.en);
+  var html = '';
+  html += '<div class="studyhead"><span class="tag" style="color:var(--ink-soft);font-size:12.5px;">뜻을 보고 영어를 떠올려보세요</span><span class="count mono">'+(state.flashIdx+1)+' / '+pool.length+'</span></div>';
+  html += '<div class="stage"><div class="card'+(state.flipped?' flipped':'')+'" id="flashCard">'
+    + '<div class="face front"><span class="tag">뜻</span>'
+    + '<div class="kr">'+escapeHtml(it.kr)+'</div>'
+    + '<span class="hint">👆 눌러서 뒤집기</span></div>'
+    + '<div class="face back"><span class="tag">정답</span>'
+    + '<div class="en-row"><span class="en">'+escapeHtml(it.en)+'</span><button class="speakbtn" id="flashSpeak" aria-label="발음 듣기">🔊</button></div>'
+    + '<div class="en-sub">'+escapeHtml(it.kr)+'</div>'
+    + '<span class="hint">👆 눌러서 다시 뒤집기</span></div>'
+    + '</div></div>';
+  html += renderExpansionBlock(exp, "flashExp");
+  html += '<div class="navrow"><button class="iconbtn" id="flashPrev">←</button>'
+    + '<button class="shufflebtn" id="flashShuffle">🔀 섞기</button>'
+    + '<button class="iconbtn" id="flashNext">→</button></div>';
+  studyBodyEl.innerHTML = html;
+
+  document.getElementById("flashCard").addEventListener("click", function(){
+    state.flipped = !state.flipped;
+    state.expOpen = false;
+    renderFlash();
+  });
+  var speakBtn = document.getElementById("flashSpeak");
+  if(speakBtn) speakBtn.addEventListener("click", function(e){ e.stopPropagation(); speak(it.en); });
+  document.getElementById("flashPrev").addEventListener("click", function(){ stepFlash(-1); });
+  document.getElementById("flashNext").addEventListener("click", function(){ stepFlash(1); });
+  document.getElementById("flashShuffle").addEventListener("click", function(){ resetFlash(); renderFlash(); });
+  wireExpansionBlock(exp, "flashExp");
+}
+function stepFlash(dir){
+  var pool = itemsForPart(state.part);
+  state.flashIdx = (state.flashIdx + dir + pool.length) % pool.length;
+  state.flipped = false;
+  state.expOpen = false;
+  renderFlash();
+}
+
+function renderSituation(){
+  var pool = situationsForPart(state.part);
+  if(pool.length === 0){ studyBodyEl.innerHTML = '<p class="empty">상황이 없어요.</p>'; return; }
+  if(state.sitOrder.length !== pool.length) resetSituation();
+  var s = currentSit();
+  var exp = expansionFor(s.en);
+  var html = '';
+  html += '<div class="studyhead"><span class="tag" style="color:var(--ink-soft);font-size:12.5px;">이럴 때, 뭐라고 말할까요?</span><span class="count mono">'+(state.sitIdx+1)+' / '+pool.length+'</span></div>';
+  html += '<div class="stage"><div class="card'+(state.flipped?' flipped':'')+'" id="sitCard">'
+    + '<div class="face front"><span class="tag">상황</span>'
+    + '<div class="kr">'+escapeHtml(s.kr)+'</div>'
+    + '<span class="hint">👆 눌러서 뒤집기</span></div>'
+    + '<div class="face back"><span class="tag">정답 표현</span>'
+    + '<div class="en-row"><span class="en">'+escapeHtml(s.en)+'</span><button class="speakbtn" id="sitSpeak" aria-label="발음 듣기">🔊</button></div>'
+    + '<div class="en-sub">'+escapeHtml(s.sub)+'</div>'
+    + '<span class="hint">👆 눌러서 다시 뒤집기</span></div>'
+    + '</div></div>';
+  html += renderExpansionBlock(exp, "sitExp");
+  html += '<div class="navrow" style="margin-top:4px;"><button class="iconbtn" id="sitPrev">←</button>'
+    + '<button class="shufflebtn" id="sitShuffle">🔀 섞기</button>'
+    + '<button class="iconbtn" id="sitNext">→</button></div>';
+  studyBodyEl.innerHTML = html;
+
+  document.getElementById("sitCard").addEventListener("click", function(){
+    state.flipped = !state.flipped;
+    state.expOpen = false;
+    renderSituation();
+  });
+  var speakBtn = document.getElementById("sitSpeak");
+  if(speakBtn) speakBtn.addEventListener("click", function(e){ e.stopPropagation(); speak(s.en); });
+  document.getElementById("sitPrev").addEventListener("click", function(){ stepSit(-1); });
+  document.getElementById("sitNext").addEventListener("click", function(){ stepSit(1); });
+  document.getElementById("sitShuffle").addEventListener("click", function(){ resetSituation(); renderSituation(); });
+  wireExpansionBlock(exp, "sitExp");
+}
+function stepSit(dir){
+  var pool = situationsForPart(state.part);
+  state.sitIdx = (state.sitIdx + dir + pool.length) % pool.length;
+  state.flipped = false;
+  state.expOpen = false;
+  renderSituation();
+}
+
+// ---- expansion block (shared by flash & situation cards) : shown right under the answer, no extra click ----
+function renderExpansionBlock(exp, prefix){
+  if(!exp || !state.flipped) return '';
+  var html = '<div class="expWrap">'
+    + '<div class="expPanel">'
+    + '<div class="expLabel">✏️ 표현 확장하기</div>'
+    + '<div class="expRow"><div class="expTxt"><div class="expEn">'+escapeHtml(exp.en)+'</div><div class="expKr">'+escapeHtml(exp.kr)+'</div></div>'
+    + '<button class="speakbtn small" id="'+prefix+'Speak" aria-label="발음 듣기">🔊</button></div>'
+    + '</div></div>';
+  return html;
+}
+function wireExpansionBlock(exp, prefix){
+  if(!exp || !state.flipped) return;
+  var sp = document.getElementById(prefix+"Speak");
+  if(sp) sp.addEventListener("click", function(e){ e.stopPropagation(); speak(exp.en); });
+}
+
+// ---- LIST ----
+var listEl = document.getElementById("view-list");
+function renderList(){
+  var pool = itemsForPart(state.part);
+  var q = state.listQuery.trim().toLowerCase();
+  if(q){
+    pool = pool.filter(function(it){
+      return it.en.toLowerCase().indexOf(q) > -1 || it.kr.indexOf(q) > -1;
+    });
+  }
+  if(state.listUnknownOnly){
+    pool = pool.filter(function(it){ return !isKnown(it.id); });
+  }
+  var html = '';
+  html += '<div class="searchbar">🔎 <input type="text" id="listSearch" placeholder="영어나 한국어로 검색" value="'+escapeAttr(state.listQuery)+'"></div>';
+  html += '<div class="filterrow"><label><input type="checkbox" id="listUnknown" '+(state.listUnknownOnly?'checked':'')+'> 모르는 표현만 보기</label>'
+    + '<span class="mono" style="margin-left:auto;">'+pool.length+'개</span></div>';
+  html += '<div class="list" id="listBody">';
+  if(pool.length===0){
+    html += '<p class="empty">해당하는 표현이 없어요.</p>';
+  }else{
+    pool.forEach(function(it, i){
+      var k = isKnown(it.id);
+      var hasExp = !!expansionFor(it.en);
+      html += '<div class="item">'
+        + '<span class="no mono">'+(i+1)+'</span>'
+        + '<div class="txt"><div class="en">'+escapeHtml(it.en)+(hasExp?' <span class="expBadge" title="확장 문장 있음">🔎</span>':'')+'</div><div class="kr">'+escapeHtml(it.kr)+'</div></div>'
+        + '<button class="speak" data-id="'+it.id+'" aria-label="발음 듣기">🔊</button>'
+        + '<button class="check'+(k?' on':'')+'" data-id="'+it.id+'">'+(k?'✓':'')+'</button>'
+        + '</div>';
+    });
+  }
+  html += '</div>';
+  listEl.innerHTML = html;
+
+  document.getElementById("listSearch").addEventListener("input", function(){
+    state.listQuery = this.value;
+    renderList();
+    var el = document.getElementById("listSearch");
+    el.focus();
+    el.setSelectionRange(el.value.length, el.value.length);
+  });
+  document.getElementById("listUnknown").addEventListener("change", function(){
+    state.listUnknownOnly = this.checked;
+    renderList();
+  });
+  listEl.querySelectorAll(".speak").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var id = btn.getAttribute("data-id");
+      var item = ITEMS.filter(function(x){return x.id===id;})[0];
+      if(item) speak(item.en);
+    });
+  });
+  listEl.querySelectorAll(".check").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var id = btn.getAttribute("data-id");
+      setKnown(id, !isKnown(id));
+      renderList();
+    });
+  });
+}
+
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+  });
+}
+function escapeAttr(s){ return escapeHtml(s); }
+
+function refreshBadges(){
+  var masteredTotal = ITEMS.filter(function(it){return isKnown(it.id);}).length;
+  document.getElementById("totalBadge").textContent = masteredTotal+" / "+ITEMS.length;
+}
+
+function render(){
+  syncPartbar();
+  refreshBadges();
+  if(state.view === "home") renderHome();
+  else if(state.view === "study") renderStudyBody();
+  else if(state.view === "list") renderList();
+}
+
+renderPartbar();
+resetFlash();
+resetSituation();
+render();
+
+})();
+</script>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("sw.js").catch(function () {});
+  });
+}
+</script>
+
+</body>
+</html>
